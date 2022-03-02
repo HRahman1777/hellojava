@@ -24,6 +24,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Laptop</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -35,13 +36,43 @@
                 <td th:text="${student.email}"/>
 
                 <th:block th:each="student_laptop: ${student.laptop}">
-                    <td th:text="| ${student_laptop.name} - ${student_laptop.model} |" />
+                    <td th:text="| ${student_laptop.name} - ${student_laptop.model} |"/>
                 </th:block>
+                <td>
+                    <a class="btn btn-outline-warning btn-sm" th:href="@{'student/edit/' + ${student.id}}"> Edit</a>
+                    <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                       th:data-bs-target="|#deleteModal${student.id}|">
+                        Delete</a>
+                </td>
             </tr>
         </th:block>
 
         </tbody>
     </table>
+
+    <th:block th:each="student: ${students}">
+    <!-- Modal -->
+    <div class="modal fade" th:id="|deleteModal${student.id}|" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Student</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Student Name: <b th:text="${student.name}"></b></p>
+                    <p>Are you sure to Delete?</p>
+                    <a class="btn btn-danger btn-sm" th:href="@{'student/delete/' + ${student.id}}">Delete</a>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </th:block>
 
 </div>
 

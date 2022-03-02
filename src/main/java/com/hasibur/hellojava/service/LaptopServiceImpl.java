@@ -22,4 +22,14 @@ public class LaptopServiceImpl implements LaptopService{
     public Laptop saveLaptop(Laptop laptop) {
         return laptopRepository.save(laptop);
     }
+
+    @Override
+    public void deleteLaptop(Long id) {
+        laptopRepository.deleteById(id);
+    }
+
+    @Override
+    public Laptop findLaptop(Long id) {
+        return laptopRepository.findById(id).get();
+    }
 }

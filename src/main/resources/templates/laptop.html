@@ -23,6 +23,7 @@
             <th scope="col">#ID</th>
             <th scope="col">Name</th>
             <th scope="col">Model</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -32,11 +33,43 @@
                 <th scope="row" th:text="${laptop.id}"/>
                 <td th:text="${laptop.name}"/>
                 <td th:text="${laptop.model}"/>
+
+                <td>
+                    <a class="btn btn-outline-warning btn-sm" th:href="@{'laptop/edit/' + ${laptop.id}}"> Edit</a>
+                    <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                       th:data-bs-target="|#deleteModal${laptop.id}|">
+                        Delete</a>
+                </td>
+
             </tr>
         </th:block>
 
         </tbody>
     </table>
+
+    <th:block th:each="laptop: ${laptops}">
+        <!-- Modal -->
+        <div class="modal fade" th:id="|deleteModal${laptop.id}|" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Laptop</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Laptop : <b th:text="|${laptop.name} - ${laptop.model}|"></b></p>
+                        <p>Are you sure to Delete?</p>
+                        <a class="btn btn-danger btn-sm" th:href="@{'laptop/delete/' + ${laptop.id}}">Delete</a>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </th:block>
 
 </div>
 
