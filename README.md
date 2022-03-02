@@ -1,5 +1,5 @@
 # hellojava
-Learning of Spring Boot - JPA - thymeleaf
+Learning of Spring Boot - JPA - thymeleaf - REST API - MySQL
 <hr>
 
 ## Model
