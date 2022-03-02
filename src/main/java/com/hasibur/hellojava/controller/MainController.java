@@ -25,6 +25,7 @@ public class MainController {
 
         model.addAttribute("laptop_form", new Laptop());
         model.addAttribute("student_form", new Student());
+        model.addAttribute("laptops", laptopService.allLaptop());
 
         return "index.html";
     }

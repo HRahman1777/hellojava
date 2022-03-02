@@ -35,10 +35,7 @@
                 <td th:text="${student.email}"/>
 
                 <th:block th:each="student_laptop: ${student.laptop}">
-                    <td>
-                        <p th:text="${student_laptop.name}"/>
-                        <p th:text="${student_laptop.model}"/>
-                    </td>
+                    <td th:text="| ${student_laptop.name} - ${student_laptop.model} |" />
                 </th:block>
             </tr>
         </th:block>

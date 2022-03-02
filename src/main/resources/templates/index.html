@@ -17,8 +17,6 @@
     <h1 class="text-center">This is Main Page</h1>
     <hr>
 
-    <hr>
-
     <div class="card p-3">
         <h3>Add Laptop</h3>
         <form th:action="@{/addlaptop}" th:object="${laptop_form}" method="POST">
@@ -40,7 +38,7 @@
         </form>
     </div>
     <hr>
-    <div class="card p-3 mt-3">
+    <div class="card p-3 mt-3 mb-3">
         <h3>Add Student</h3>
         <form th:action="@{/addstudent}" th:object="${student_form}" method="POST">
             <div class="mb-3">
@@ -58,16 +56,7 @@
                 <p>Laptop Name</p>
                 <select class="form-select" th:field="*{laptop}" required>
                     <th:block th:each="lap: ${laptops}">
-                        <option th:text="${lap.name}" th:value="${lap.id}"/>
-                    </th:block>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <p>Laptop Model</p>
-                <select class="form-select" th:field="*{laptop}" required>
-                    <th:block th:each="lap: ${laptops}">
-                        <option th:text="${lap.model}" th:value="${lap.id}"/>
+                        <option th:value="${lap.id}" th:text="| ${lap.name} - ${lap.model} |" />
                     </th:block>
                 </select>
             </div>
