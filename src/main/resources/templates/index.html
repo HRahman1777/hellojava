@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="" th:href="@{css/styles.css}">
+
+    <title>All About Spring Boot</title>
+</head>
+<body>
+
+<div th:insert="fragments/layout.html :: navbar"></div>
+<div class="container mt-2">
+    <h1 class="text-center">This is Main Page</h1>
+    <hr>
+
+    <hr>
+
+    <div class="card p-3">
+        <h3>Add Laptop</h3>
+        <form th:action="@{/addlaptop}" th:object="${laptop_form}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" th:field="*{name}" required/>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Model</label>
+                <input type="text" class="form-control" th:field="*{model}" required/>
+            </div>
+
+
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-outline-dark">Add Laptop</button>
+            </div>
+
+        </form>
+    </div>
+    <hr>
+    <div class="card p-3 mt-3">
+        <h3>Add Student</h3>
+        <form th:action="@{/addstudent}" th:object="${student_form}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" th:field="*{name}" required/>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" th:field="*{email}" required/>
+            </div>
+
+
+            <div class="mb-3">
+                <p>Laptop Name</p>
+                <select class="form-select" th:field="*{laptop}" required>
+                    <th:block th:each="lap: ${laptops}">
+                        <option th:text="${lap.name}" th:value="${lap.id}"/>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <p>Laptop Model</p>
+                <select class="form-select" th:field="*{laptop}" required>
+                    <th:block th:each="lap: ${laptops}">
+                        <option th:text="${lap.model}" th:value="${lap.id}"/>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-outline-dark">Add Student</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<div th:insert="fragments/layout.html :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
