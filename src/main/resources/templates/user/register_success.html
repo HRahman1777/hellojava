@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="" th:href="@{css/styles.css}">
+
+    <title>All About Spring Boot</title>
+</head>
+<body>
+
+<div th:insert="fragments/layout.html :: navbar"></div>
+<div class="container mt-2">
+    <h1 class="text-center">User Details</h1>
+    <h3>You have signed up successfully!</h3>
+    <hr>
+    <a class="text-center btn btn-outline-dark" th:href="@{/user}">Logged Page(User Admin)</a>
+    <a class="text-center btn btn-outline-dark" th:href="@{/user/home}">User Details (Admin Admin)</a>
+    <!--
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <th:block th:each="user: ${users}">
+                <tr>
+                    <th scope="row" th:text="${user.id}"/>
+                    <td th:text="|${user.firstName} ${user.lastName}|"/>
+                    <td th:text="${user.email}"/>
+                    .<td th:text="${user.password}"/>
+                    <td th:text="${user.phoneNumber}"/>
+                </tr>
+            </th:block>
+
+            </tbody>
+        </table>
+    -->
+
+
+</div>
+
+
+<div th:insert="fragments/layout.html :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
